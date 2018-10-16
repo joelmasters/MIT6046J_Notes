@@ -30,6 +30,8 @@ Complexity: O(n^2), but we can do better
 
 Start at point closest to middle boundary on left (a, largest x-coord) and on right (b, smallest x-coord) and comput y(i,j) (middle-line intercept point). Go clockwise on b and compute new y(i,j). If it is higher, move clockwise again on b until it gets lower. If it is lower, go counter-clockwise on a until a max and then another min is reached.
 
+Complexity: O(nlogn)
+
 Pseudocode:
 ```
 i = 1;
@@ -41,3 +43,7 @@ while (y(i,j+1) > y(i,j) or (y(i+1,j) > (y,i,j)):
     i = i - 1 # move a counter-clockwise
  return (ai, bj) as upper tangent
 ```
+
+To determine then the overall convex hull:
+First link: ai -> bj (upper tangent), go around b until you see bm (lower tanget on b) and connect to ak (lower tangent on a) and continue around a until you reach ai.
+
