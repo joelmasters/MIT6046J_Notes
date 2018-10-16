@@ -24,4 +24,20 @@ For input set S, divide into left half "A" and right half "B" by x-coordinates
 Compute CH(A) and CH(B)
 Combine
 
-Stopped @ 24:45
+!['Convex Hull Split'](convexHull2.PNG)
+
+Complexity: O(n^2), but we can do better
+
+Start at point closest to middle boundary on left (a, largest x-coord) and on right (b, smallest x-coord) and comput y(i,j) (middle-line intercept point). Go clockwise on b and compute new y(i,j). If it is higher, move clockwise again on b until it gets lower. If it is lower, go counter-clockwise on a until a max and then another min is reached.
+
+Pseudocode:
+```
+i = 1;
+j = 1;
+while (y(i,j+1) > y(i,j) or (y(i+1,j) > (y,i,j)):
+  if (y(i,j+1) > y(i,j):
+    j = j+1 # move b clockwise
+  else:
+    i = i - 1 # move a counter-clockwise
+ return (ai, bj) as upper tangent
+```
